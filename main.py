@@ -6,6 +6,9 @@ app = Flask(__name__)
 def hello_world():
     return render_template("sign-in-page.html")
 
+@app.route('/dash')
+def dashboard():
+    return render_template("dashboard.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
