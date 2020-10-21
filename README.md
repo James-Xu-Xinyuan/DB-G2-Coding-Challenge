@@ -2,6 +2,8 @@
 
 # Starting from AM 21 Oct 2020
 
+Note: We should commit Code to Development Branch. And later merge into main branch.
+
 # MVP
 
 - SO: I want the application to logon to the database back end
