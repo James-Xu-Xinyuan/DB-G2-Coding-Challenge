@@ -13,15 +13,18 @@ def user_auth(username, password):
         user_pwd = response[0]
         if user_pwd == password:
             cursor1.close()
+            cnx.close()
             return True
         else:
             print("invalid username or password")
             cursor1.close()
+            cnx.close()
             return False
         # potentially add login record
     else:
         print("invalid username or password")
         cursor1.close()
+        cnx.close()
         return False
 
 
@@ -41,6 +44,7 @@ def get_instrument_latest_avg(instrument_name):
         print(instrument_id)
     else:
         cursor2.close()
+        cnx.close()
         return "cant find this instrument"
     
     query = ("SELECT MAX(deal_id) FROM deal ")
@@ -60,6 +64,9 @@ def get_instrument_latest_avg(instrument_name):
     avg_sell = cursor3.fetchone()[0]
     print(avg_sell)
 
+    cursor2.close()
+    cursor3.close()
+    cnx.close()
     return (avg_sell, avg_buy)
 
 
@@ -79,5 +86,19 @@ def get_latest_deals():
     # how should return data be formated
     for row in cursor5:
         deal_data.append(row)
-        
-    return 
+
+    cursor4.close()
+    cursor5.close()
+    cnx.close()
+    return deal_data
+
+def insert_test_user():
+    cnx = mysql.connector.connect(user='root', password='ppp', host='127.0.0.1',database='db_grad_cs_1917')
+    cursor6 = cnx.cursor()
+    query = ("INSERT INTO users (user_id, user_pwd)" "VALUES ('hello', 'world')")
+    cursor6.execute(query)
+    query = ("INSERT INTO users (user_id, user_pwd)" "VALUES ('admin', '123456')")
+    cursor6.execute(query)
+    cnx.commit()
+    cursor6.close()
+    cnx.close()
