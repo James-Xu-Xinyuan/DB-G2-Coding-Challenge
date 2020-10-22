@@ -9,7 +9,7 @@
 <body>
 <img class="ui right aligned small image" src="/static/DBLogo2.jpg">
 <div class="ui center aligned basic segment">
-    <form class="ui form">
+    <form action="{{ url_for('dashboard') }}" method="post" class="ui form">
       <div class="field">
         <label>Enter Username</label>
         <input id="username" style="width:300px;" type="text" name="username" placeholder="username">
@@ -18,7 +18,7 @@
         <label>Enter Password</label>
         <input id="password" style="width:300px;" type="text" name="password" placeholder="password">
       </div>
-      <button id="submit-button" style="background-color:#0018A8;" class="ui blue button" type="submit">Log In</button>
+        <button id="submit-button" style="background-color:#0018A8;" class="ui blue button" type="submit">Log In</button>
     </form>
 </div>
 
@@ -49,17 +49,19 @@
 
 
 
-           if (valid) {
-                $.ajax({
-                    type: 'POST',
-                    url: 'dash',
-                    contentType: 'application/json;charset=UTF-8',
-                    data: JSON.stringify({'username': username, 'password': password}),
-                    success: function(response) {
-                        document.write(response);
-                    }
-                });
-           }
+<!--           if (valid) {-->
+<!--                $.ajax({-->
+<!--                    type: 'POST',-->
+<!--                    url: 'dash',-->
+<!--                    contentType: 'application/json;charset=UTF-8',-->
+<!--                    data: JSON.stringify({'username': username, 'password': password}),-->
+<!--                    success: function(response) {-->
+<!--                        document.write(response);-->
+<!--                    }-->
+<!--                });-->
+<!--           }-->
+
+
 
       });
    });

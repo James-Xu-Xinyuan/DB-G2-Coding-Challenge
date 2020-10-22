@@ -55,8 +55,10 @@
     <div class="item">Borealis</div>
     <div class="item">Celestial</div>
     <div class="item">Deuteronic</div>
+    <div class="item">Eclipse</div>
     <div class="item">Floral</div>
     <div class="item">Galactia</div>
+    <div class="item">Heliosphere</div>
     <div class="item">Interstella</div>
     <div class="item">Jupiter</div>
     <div class="item">Koronis</div>
@@ -70,8 +72,8 @@
 <!-- SELL&BUY PRICE -->
             <div class="div_2">
              <div class="ui statistic ">
-                    <div class="value">
-                            1,500
+                    <div id="buy_price" class="value">
+                            {{avg_buy_all}}
                         </div>
                     <div class="label">
                         Avg:Buy Side
@@ -79,8 +81,8 @@
 
 
                 <div class="ui statistic ">
-                    <div class="value">
-                            2,204
+                    <div id="sell_price" class="value">
+                            {{avg_sell_all}}
                         </div>
                     <div class="label">
                         Avg:Sell Side
@@ -99,23 +101,41 @@
     </a>
      <div class="ui statistics stat_mid">
 <!-- PROFIT & LOSS -->
-  <div class="red statistic">
+  {% if realized_profit > 0 %}
+  <div class="green statistic">
     <div class="value">
-      8500
+      {{realized_profit}}
     </div>
     <div class="label">
-      Profit
+      Realized Profit
     </div>
   </div>
   <div class="green statistic ">
     <div class="value">
-      0
+      {{expected_profit}}
     </div>
     <div class="label">
-      Loss
+      Effective Profit
     </div>
-
   </div>
+  {% else %}
+  <div class="red statistic">
+    <div class="value">
+      {{realized_loss}}
+    </div>
+    <div class="label">
+      Realized Loss
+    </div>
+  </div>
+  <div class="red statistic ">
+    <div class="value">
+      {{expected_loss}}
+    </div>
+    <div class="label">
+      Effective Loss
+    </div>
+  </div>
+  {% endif %}
 
 <!-- USER DEAL DATA -->
 
@@ -127,63 +147,27 @@
             <thead>
 
               <tr>
-                <th>Deal_ID</th>
-                <th>Price</th>
                 <th>Instrument</th>
+                <th>Price</th>
+                <th>Type</th>
+                <th>Time</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>John</td>
-                <td>No Action</td>
-                <td>None</td>
-              </tr>
-              <tr>
-                <td>Jamie</td>
-                <td class="positive">Approved</td>
-                <td class="warning">Requires call</td>
-              </tr>
-              <tr>
-                <td>Jill</td>
-                <td class="negative">Denied</td>
-                <td>None</td>
-              </tr>
-            <tr>
-                <td>John</td>
-                <td>No Action</td>
-                <td>None</td>
-              </tr>
-              <tr>
-                <td>Jamie</td>
-                <td class="positive">Approved</td>
-                <td class="warning">Requires call</td>
-              </tr>
-              <tr>
-                <td>Jill</td>
-                <td class="negative">Denied</td>
-                <td>None</td>
-              </tr>
-            <tr>
-                <td>John</td>
-                <td>No Action</td>
-                <td>None</td>
-              </tr>
-              <tr>
-                <td>Jamie</td>
-                <td class="positive">Approved</td>
-                <td class="warning">Requires call</td>
-              </tr>
-              <tr>
-                <td>Jill</td>
-                <td class="negative">Denied</td>
-                <td>None</td>
-              </tr>
+                {% for row in deal_data %}
+                <tr>
+                   <td>{{row[0]}}</td>
+                   <td>{{row[1]}}</td>
+                   <td>{{row[2]}}</td>
+                   <td>{{row[3]}}</td>
+                </tr>
+                {% endfor %}
             </tbody>
-            <tfoot>
-              <tr><th>3 People</th>
-              <th>2 Approved</th>
-              <th></th>
-            </tr></tfoot>
+<!--            <tfoot>-->
+<!--              <tr><th>3 People</th>-->
+<!--              <th>2 Approved</th>-->
+<!--              <th></th>-->
+<!--            </tr></tfoot>-->
           </table>
 
         </div>
@@ -207,33 +191,29 @@
         <table class="ui sortable celled table">
             <thead>
                 <tr>
-                    <th>Deal_ID</th>
-                    <th>Price</th>
                     <th>Instrument</th>
+                    <th>Price</th>
+                    <th>Type</th>
+                    <th>Quantity</th>
+                    <th>Time</th>
                   </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>John</td>
-                <td>No Action</td>
-                <td>None</td>
-              </tr>
-              <tr>
-                <td>Jamie</td>
-                <td class="positive">Approved</td>
-                <td class="warning">Requires call</td>
-              </tr>
-              <tr>
-                <td>Jill</td>
-                <td class="negative">Denied</td>
-                <td>None</td>
-              </tr>
+                {% for row in historical %}
+                <tr>
+                   <td>{{row[0]}}</td>
+                   <td>{{row[1]}}</td>
+                   <td>{{row[2]}}</td>
+                   <td>{{row[3]}}</td>
+                   <td>{{row[4]}}</td>
+                </tr>
+                {% endfor %}
             </tbody>
-            <tfoot>
-              <tr><th>3 People</th>
-              <th>2 Approved</th>
-              <th></th>
-            </tr></tfoot>
+<!--            <tfoot>-->
+<!--              <tr><th>3 People</th>-->
+<!--              <th>2 Approved</th>-->
+<!--              <th></th>-->
+<!--            </tr></tfoot>-->
           </table>
       </div>
     </div>>
@@ -245,11 +225,39 @@
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 <script>
        $(document).ready(function(){
-            $('.ui.dropdown.item').dropdown(
-            );
-        });
-        $(document).ready(function(){
-          $('.ui.floating.dropdown.labeled.search.icon.button').dropdown()
+            $('.ui.dropdown.item').dropdown();
+            $('.ui.floating.dropdown.labeled.search.icon.button').dropdown({
+                onChange: function (val) {
+                   if (val[0] === "a") {
+                      var arr = JSON.parse('{{a_buy_sell}}');
+                   } else if (val[0] === "b") {
+                      var arr = JSON.parse('{{b_buy_sell}}');
+                   } else if (val[0] === "c") {
+                      var arr = JSON.parse('{{c_buy_sell}}');
+                   } else if (val[0] === "d") {
+                      var arr = JSON.parse('{{d_buy_sell}}');
+                   } else if (val[0] === "e") {
+                      var arr = JSON.parse('{{e_buy_sell}}');
+                   } else if (val[0] === "f") {
+                      var arr = JSON.parse('{{f_buy_sell}}');
+                   } else if (val[0] === "g") {
+                      var arr = JSON.parse('{{g_buy_sell}}');
+                   } else if (val[0] === "h") {
+                      var arr = JSON.parse('{{h_buy_sell}}');
+                   } else if (val[0] === "i") {
+                      var arr = JSON.parse('{{i_buy_sell}}');
+                   } else if (val[0] === "j") {
+                      var arr = JSON.parse('{{j_buy_sell}}');
+                   } else if (val[0] === "k") {
+                      var arr = JSON.parse('{{k_buy_sell}}');
+                   } else {
+                      var arr = JSON.parse('{{l_buy_sell}}');
+                   }
+
+                   document.getElementById("buy_price").innerHTML = arr[0];
+                   document.getElementById("sell_price").innerHTML = arr[1];
+                }
+            });
         });
 
 
