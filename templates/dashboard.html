@@ -3,18 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <title>DashBoard</title>
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-        <link rel= "stylesheet" type= "text/css" href= "/static/styles/sign-in-page.css') }}">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
         <link rel= "stylesheet" type= "text/css" href= "/static/styles/dashboard.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
 
 
 
     </head>
     <body>
-    <a href="/"><img class="ui right aligned small image" src="/static/DBLogo2.jpg"></a>
+    <div>
+        <!-- Menu -->
 
+    <img class="ui right aligned small image " src="/static/DBLogo2.jpg">
 
 
         <div class="ui large menu " >
@@ -25,12 +24,11 @@
               Messages
             </a>
             <div class="right menu">
-              <div class="ui dropdown item">
-                Language <i class="dropdown icon"></i>
+              <div id="language_drop" class="ui dropdown item">
+                Select Dashboard <i class="dropdown icon"></i>
                 <div class="menu">
-                  <a class="item">English</a>
-                  <a class="item">Russian</a>
-                  <a class="item">Spanish</a>
+                  <div class="item" >DashBoard</div>
+                  <div class="item" href="/user_Data.html">UserTradingData</div>
                 </div>
               </div>
               <div class="item">
@@ -38,46 +36,40 @@
               </div>
             </div>
           </div>
-
-    <div class="ui segment">
+    </div>
+<!-- DIVIDER two column -->
+    <div class="ui segment col_height">
         <div class="ui two column very relaxed grid">
-        <div class="column">
-            <div class="ui floating labeled icon dropdown button div_1">
-            <i class="filter icon"></i>
-            <span class="text">Filter</span>
-            <div class="menu">
-        <div class="header">
-            Search Issues
-        </div>
-        <div class="ui left icon input">
+<!-- DIVIDER first column -->
+     <div class="column">
 
-         <i class="search icon "></i>
-        <input type="text" name="search" placeholder="Search...">
-        </div>
-    <div class="header">
-      <i class="tags icon"></i>
-      Filter by tag
-    </div>
+         <!-- Filter icon-->
 
-    <div class="divider"></div>
-    <div class="item">
-      <div class="ui red empty circular label"></div>
-      Important
-    </div>
-    <div class="item">
-      <div class="ui blue empty circular label"></div>
-      Announcement
-    </div>
-    <div class="item">
-      <div class="ui black empty circular label"></div>
-      Discussion
+    <div class="sel_ins">
+
+<div class="ui floating dropdown labeled search icon button">
+  <i class="world icon"></i>
+  <span class="text">Select Instrument</span>
+  <div class="menu">
+    <div class="item">Astronomica</div>
+    <div class="item">Borealis</div>
+    <div class="item">Celestial</div>
+    <div class="item">Deuteronic</div>
+    <div class="item">Floral</div>
+    <div class="item">Galactia</div>
+    <div class="item">Interstella</div>
+    <div class="item">Jupiter</div>
+    <div class="item">Koronis</div>
+    <div class="item">Lunatic</div>
+
+
+  </div>
+</div>
     </div>
 
-    </div>
-            </div>
-
-             <br>
-             <div class="ui statistic div_2">
+<!-- SELL&BUY PRICE -->
+            <div class="div_2">
+             <div class="ui statistic ">
                     <div class="value">
                             1,500
                         </div>
@@ -95,10 +87,18 @@
                     </div>
                 </div>
              </div>
+             </div>
 
     </div>
-    <div class="column">
-     <div class="ui statistics ">
+    <div class="column mid">
+<!-- SECOND column -->
+    <a style="left:5.5%" class="ui image label">
+        <img src="/static/joe.jpg">
+         Joe
+
+    </a>
+     <div class="ui statistics stat_mid">
+<!-- PROFIT & LOSS -->
   <div class="red statistic">
     <div class="value">
       8500
@@ -114,12 +114,16 @@
     <div class="label">
       Loss
     </div>
+
   </div>
 
+<!-- USER DEAL DATA -->
 
-    <div style="overflow-x:auto; width:80%; height:3cm; margin:auto"; >
-        <div class="ui medium header">Your deal history</div>
-        <table class="ui sortable celled table" >
+    <div class = "tab_mid" >
+        <div class="ui medium header ">Your deal history</div>
+        <div style="overflow-x:auto; width:300%; height:4cm; margin:auto" class="mid">
+
+        <table  class="  ui sortable celled table " >
             <thead>
 
               <tr>
@@ -182,11 +186,13 @@
             </tr></tfoot>
           </table>
 
+        </div>
+
       </div>
 
 
-</div>
-             <br>
+        </div>
+        <br>
     </div>
   </div>
   <div class="ui vertical divider">
@@ -194,7 +200,9 @@
   </div>
 </div>
 
-
+<!-- Generic DEAL DATA -->
+    <div>
+        <div class="ui large header gen_tab_mid">HISTORIC TRADING RECORD</div>
     <div style="overflow-x:auto; width:80%; height:45%; margin:auto"; >
         <table class="ui sortable celled table">
             <thead>
@@ -228,12 +236,23 @@
             </tr></tfoot>
           </table>
       </div>
-
+    </div>>
 
 
 </body>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script>
+       $(document).ready(function(){
+            $('.ui.dropdown.item').dropdown(
+            );
+        });
+        $(document).ready(function(){
+          $('.ui.floating.dropdown.labeled.search.icon.button').dropdown()
+        });
 
 
+</script>
 
 </html>

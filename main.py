@@ -18,6 +18,11 @@ def dashboard():
     return render_template("dashboard.html")
 
 
+@app.route('/user')
+def user_Data():
+    return render_template("user_Data.html")
+
+
 @app.route('/testConnection')
 def testConn():
     # r = requests.get('http://localhost:8090/client/testservice')

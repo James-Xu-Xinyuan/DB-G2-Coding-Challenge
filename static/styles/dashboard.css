@@ -11,10 +11,12 @@ button_container {
   text-align: left;
 }
 
-img {
-  position:fixed;
-  top:0;
-  right:0;
+.imglogo {
+  position:absolute;
+  top:0cm;
+  left:0cm;
+  /*height:5cm;*/
+
 }
 .div_1{
 
@@ -26,8 +28,13 @@ img {
 
 }
 .div_2{
+  position:relative;
+  top: 10%;
+  left : 40%;
   width: 100%;
   margin: 0 auto;
+
+
 }
 
 
@@ -35,5 +42,59 @@ img {
 
     color:#0018A8;
 }
+.sel_ins
+{
+    position:absolute;
+}
+.menu_loc{
 
+position:absolute;
+top:6cm;
 
+}
+
+.mid{
+
+position: absolute;
+left: 0%;
+
+}
+
+.stat_mid{
+position: relative;
+left: 30%;
+
+}
+
+.tab_mid{
+position: absolute;
+left: -10%;
+top:100%;
+
+}
+
+.tab_header
+{
+position:relative;
+top:30%;
+}
+
+.user_deal{
+position:relative;
+}
+
+.table_wrapper thead{
+    position: sticky;
+    top: 0;
+}
+
+.col_height{
+    height:55%;
+
+}
+.gen_tab_mid
+{
+    position: relative;
+    left:35%;
+
+}
