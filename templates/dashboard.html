@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>DashBoard</title>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+        <link rel= "stylesheet" type= "text/css" href= "/static/styles/sign-in-page.css') }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+        <link rel= "stylesheet" type= "text/css" href= "/static/styles/dashboard.css">
+
+
+
+    </head>
+    <body>
+    <a href="/"><img class="ui right aligned small image" src="/static/DBLogo2.jpg"></a>
+
+
+        <div class="ui large menu " >
+            <a class="active item ">
+              Home
+            </a>
+            <a class="item">
+              Messages
+            </a>
+            <div class="right menu">
+              <div class="ui dropdown item">
+                Language <i class="dropdown icon"></i>
+                <div class="menu">
+                  <a class="item">English</a>
+                  <a class="item">Russian</a>
+                  <a class="item">Spanish</a>
+                </div>
+              </div>
+              <div class="item">
+                  <div style="background-color:#0018A8;" class="ui primary button dbblue">Log Out</div>
+              </div>
+            </div>
+          </div>
+
+    <div class="ui segment">
+        <div class="ui two column very relaxed grid">
+        <div class="column">
+            <div class="ui floating labeled icon dropdown button div_1">
+            <i class="filter icon"></i>
+            <span class="text">Filter</span>
+            <div class="menu">
+        <div class="header">
+            Search Issues
+        </div>
+        <div class="ui left icon input">
+
+         <i class="search icon "></i>
+        <input type="text" name="search" placeholder="Search...">
+        </div>
+    <div class="header">
+      <i class="tags icon"></i>
+      Filter by tag
+    </div>
+
+    <div class="divider"></div>
+    <div class="item">
+      <div class="ui red empty circular label"></div>
+      Important
+    </div>
+    <div class="item">
+      <div class="ui blue empty circular label"></div>
+      Announcement
+    </div>
+    <div class="item">
+      <div class="ui black empty circular label"></div>
+      Discussion
+    </div>
+
+    </div>
+            </div>
+
+             <br>
+             <div class="ui statistic div_2">
+                    <div class="value">
+                            1,500
+                        </div>
+                    <div class="label">
+                        Avg:Buy Side
+                    </div>
+
+
+                <div class="ui statistic ">
+                    <div class="value">
+                            2,204
+                        </div>
+                    <div class="label">
+                        Avg:Sell Side
+                    </div>
+                </div>
+             </div>
+
+    </div>
+    <div class="column">
+     <div class="ui statistics ">
+  <div class="red statistic">
+    <div class="value">
+      8500
+    </div>
+    <div class="label">
+      Profit
+    </div>
+  </div>
+  <div class="green statistic ">
+    <div class="value">
+      0
+    </div>
+    <div class="label">
+      Loss
+    </div>
+  </div>
+
+
+    <div style="overflow-x:auto; width:80%; height:3cm; margin:auto"; >
+        <div class="ui medium header">Your deal history</div>
+        <table class="ui sortable celled table" >
+            <thead>
+
+              <tr>
+                <th>Deal_ID</th>
+                <th>Price</th>
+                <th>Instrument</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>John</td>
+                <td>No Action</td>
+                <td>None</td>
+              </tr>
+              <tr>
+                <td>Jamie</td>
+                <td class="positive">Approved</td>
+                <td class="warning">Requires call</td>
+              </tr>
+              <tr>
+                <td>Jill</td>
+                <td class="negative">Denied</td>
+                <td>None</td>
+              </tr>
+            <tr>
+                <td>John</td>
+                <td>No Action</td>
+                <td>None</td>
+              </tr>
+              <tr>
+                <td>Jamie</td>
+                <td class="positive">Approved</td>
+                <td class="warning">Requires call</td>
+              </tr>
+              <tr>
+                <td>Jill</td>
+                <td class="negative">Denied</td>
+                <td>None</td>
+              </tr>
+            <tr>
+                <td>John</td>
+                <td>No Action</td>
+                <td>None</td>
+              </tr>
+              <tr>
+                <td>Jamie</td>
+                <td class="positive">Approved</td>
+                <td class="warning">Requires call</td>
+              </tr>
+              <tr>
+                <td>Jill</td>
+                <td class="negative">Denied</td>
+                <td>None</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr><th>3 People</th>
+              <th>2 Approved</th>
+              <th></th>
+            </tr></tfoot>
+          </table>
+
+      </div>
+
+
+</div>
+             <br>
+    </div>
+  </div>
+  <div class="ui vertical divider">
+    and
+  </div>
+</div>
+
+
+    <div style="overflow-x:auto; width:80%; height:45%; margin:auto"; >
+        <table class="ui sortable celled table">
+            <thead>
+                <tr>
+                    <th>Deal_ID</th>
+                    <th>Price</th>
+                    <th>Instrument</th>
+                  </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>John</td>
+                <td>No Action</td>
+                <td>None</td>
+              </tr>
+              <tr>
+                <td>Jamie</td>
+                <td class="positive">Approved</td>
+                <td class="warning">Requires call</td>
+              </tr>
+              <tr>
+                <td>Jill</td>
+                <td class="negative">Denied</td>
+                <td>None</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr><th>3 People</th>
+              <th>2 Approved</th>
+              <th></th>
+            </tr></tfoot>
+          </table>
+      </div>
+
+
+
+</body>
+
+
+
+
+</html>
