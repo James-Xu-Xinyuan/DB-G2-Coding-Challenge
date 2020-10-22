@@ -8,9 +8,6 @@ app = Flask(__name__)
 def hello_world():
     return render_template("sign-in-page.html")
 
-@app.route('/dash')
-def dashboard():
-    return render_template("dashboard.html")
 
 @app.route('/dash', methods=['GET', 'POST'])
 def dashboard():
