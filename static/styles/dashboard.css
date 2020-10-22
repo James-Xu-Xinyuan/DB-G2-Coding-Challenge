@@ -1,0 +1,39 @@
+button_container {
+  position: relative;
+  width:80%;
+}
+
+.float_center {
+
+  float: right;
+  position: relative;
+  left: -50%; /* or right 50% */
+  text-align: left;
+}
+
+img {
+  position:fixed;
+  top:0;
+  right:0;
+}
+.div_1{
+
+  float: right;
+  position: absolute;
+  left: -70%; /* or right 50% */
+
+
+
+}
+.div_2{
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+.dbblue{
+
+    color:#0018A8;
+}
+
+
