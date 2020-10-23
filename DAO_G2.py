@@ -70,22 +70,38 @@ def get_instrument_latest_avg(instrument_name):
 # get the lastest (approximatly 10 to 20) deals from databse
 def get_latest_deals():
     cnx = mysql.connector.connect(user='root', password='ppp', host='127.0.0.1', database='db_grad_cs_1917')
-    cursor4 = cnx.cursor()
-    cursor5 = cnx.cursor()
+    cursor4 = cnx.cursor(buffered=True)
+    cursor5 = cnx.cursor(buffered=True)
+    cursor7 = cnx.cursor()
     deal_data = []
+    instruments = {}
+
+    query = ("SELECT * FROM instrument")
+    cursor7.execute(query)
+    for row in cursor7:
+        instruments[row[0]] = row[1]
+    # print(instruments)
+    # print(instruments[1001])
 
     query = ("SELECT MAX(deal_id) FROM deal ")
     cursor4.execute(query)
-    latest_deal_id = cursor4.fetchone()[0] - 10
+    response = cursor4.fetchone()
+    latest_deal_id = response[0] - 10
     print(latest_deal_id)
     query = ("SELECT * FROM deal WHERE deal_id>" + str(latest_deal_id))
     cursor5.execute(query)
     # how should return data be formated
     for row in cursor5:
-        deal_data.append(row)
+        time = row[1]
+        instrument_id = row[3]
+        instrument_type = row[4]
+        price = float(row[5])
+        quantity = row[6]
+        deal = (instruments[instrument_id], price, instrument_type, quantity, time)
+        deal_data.append(deal)
 
-    cursor4.close()
-    cursor5.close()
+    # cursor4.close()
+    # cursor5.close()
     cnx.close()
     return deal_data
 
