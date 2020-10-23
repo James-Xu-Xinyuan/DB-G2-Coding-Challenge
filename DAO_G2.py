@@ -74,8 +74,8 @@ def get_latest_deals():
     cursor5 = cnx.cursor(buffered=True)
     cursor7 = cnx.cursor()
     deal_data = []
-    instruments = {}
 
+    instruments = {}
     query = ("SELECT * FROM instrument")
     cursor7.execute(query)
     for row in cursor7:
@@ -118,3 +118,41 @@ def insert_test_user():
     cnx.commit()
     cursor6.close()
     cnx.close()
+
+def get_dealer_history(dealer):
+    cnx = mysql.connector.connect(user='root', password='ppp', host='127.0.0.1', database='db_grad_cs_1917')
+    cursor8 = cnx.cursor(buffered=True)
+    cursor9 = cnx.cursor()
+    cursor10 = cnx.cursor()
+
+    instruments = {}
+    query = ("SELECT * FROM instrument")
+    cursor9.execute(query)
+    for row in cursor9:
+        instruments[row[0]] = row[1]
+    print(instruments)
+
+    counterparty = {}
+    query = ("SELECT counterparty_id, counterparty_name FROM counterparty")
+    cursor10.execute(query)
+    for row in cursor10:
+        counterparty[row[1]] = row[0]
+    print(counterparty)
+
+    dealer_id = counterparty[dealer]
+    print(dealer_id)
+
+    query = ("SELECT deal_instrument_id,  deal_amount, deal_type, deal_time FROM deal "
+             + "WHERE deal_counterparty_id=" + str(dealer_id)
+             + " ORDER BY deal_id DESC LIMIT 10")
+    print(query)
+    history = [];
+    cursor8.execute(query)
+    for row in cursor8:
+        name = instruments[row[0]]
+        price = float(row[1])
+        instrument_type = row[2]
+        time = row[3]
+        history.append((name, price, instrument_type, time))
+
+    return history
