@@ -38,7 +38,7 @@ def get_instrument_latest_avg(instrument_name):
     response = cursor2.fetchone()
     if response:
         instrument_id = response[0]
-        print(instrument_id)
+        # print(instrument_id)
     else:
         cursor2.close()
         cnx.close()
@@ -47,19 +47,19 @@ def get_instrument_latest_avg(instrument_name):
     query = ("SELECT MAX(deal_id) FROM deal ")
     cursor3.execute(query)
     latest_deal_id = cursor3.fetchone()[0] - 100
-    print(latest_deal_id)
+    # print(latest_deal_id)
 
     query = ("SELECT AVG(deal_amount) FROM deal" + " WHERE deal_type='B' " +
              " AND deal_instrument_id=" + str(instrument_id) + " AND deal_id>" + str(latest_deal_id))
     cursor2.execute(query)
     avg_buy = cursor2.fetchone()[0]
-    print(avg_buy)
+    # print(avg_buy)
 
     query = ("SELECT AVG(deal_amount) FROM deal" + " WHERE deal_type='S' " +
              " AND deal_instrument_id=" + str(instrument_id) + " AND deal_id>" + str(latest_deal_id))
     cursor3.execute(query)
     avg_sell = cursor3.fetchone()[0]
-    print(avg_sell)
+    # print(avg_sell)
 
     cursor2.close()
     cursor3.close()
@@ -87,7 +87,7 @@ def get_latest_deals():
     cursor4.execute(query)
     response = cursor4.fetchone()
     latest_deal_id = response[0] - 10
-    print(latest_deal_id)
+    # print(latest_deal_id)
     query = ("SELECT * FROM deal WHERE deal_id>" + str(latest_deal_id))
     cursor5.execute(query)
     # how should return data be formated
@@ -130,22 +130,22 @@ def get_dealer_history(dealer):
     cursor9.execute(query)
     for row in cursor9:
         instruments[row[0]] = row[1]
-    print(instruments)
+    # print(instruments)
 
     counterparty = {}
     query = ("SELECT counterparty_id, counterparty_name FROM counterparty")
     cursor10.execute(query)
     for row in cursor10:
         counterparty[row[1]] = row[0]
-    print(counterparty)
+    # print(counterparty)
 
     dealer_id = counterparty[dealer]
-    print(dealer_id)
+    # print(dealer_id)
 
     query = ("SELECT deal_instrument_id,  deal_amount, deal_type, deal_time FROM deal "
              + "WHERE deal_counterparty_id=" + str(dealer_id)
              + " ORDER BY deal_id DESC LIMIT 10")
-    print(query)
+    # print(query)
     history = [];
     cursor8.execute(query)
     for row in cursor8:
